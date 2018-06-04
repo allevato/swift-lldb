@@ -5,7 +5,7 @@ CURDIR = $(shell pwd)
 include $(LEVEL)/Makefile.rules
 
 a.out: main.swift libCppLib.dylib libWrapper.dylib
-	$(SWIFTC) $(SWIFTFLAGS) -Xlinker -rpath -Xlinker $(CURDIR) -I$(CURDIR) -lWrapper -L$(CURDIR) -o $@ $<
+	$(SWIFTC) $(SWIFTFLAGS) -Xlinker -rpath -Xlinker $(CURDIR) -I$(CURDIR) -I$(SRCDIR)/CppLib -lWrapper -L$(CURDIR) -o $@ $<
 
 libCppLib.dylib: CppLib/CppLib.cpp
 	mkdir -p CppLib
